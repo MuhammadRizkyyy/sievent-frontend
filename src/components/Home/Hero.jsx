@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 function SamplePrevArrow(props) {
   const { onClick } = props;
@@ -35,6 +36,8 @@ export default function Hero() {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: true, 
+    autoplay: true, 
+    autoplaySpeed: 1000,
     prevArrow: <SamplePrevArrow />,
     nextArrow: <SampleNextArrow />,
     appendDots: dots => (
@@ -57,9 +60,11 @@ export default function Hero() {
             Temukan Ticket Acara Hanya Di <span className="text-blue-500">SiEvent</span>
           </h1>
           <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+            <Link to="/event">
             <button className="bg-[#00ADB5] hover:bg-blue-600 text-white font-medium px-6 py-2 rounded-lg active:scale-90 transition text-sm sm:text-base">
               Cari Event Sekarang
             </button>
+            </Link>
             <button className="bg-[#393E46] hover:bg-blue-600 text-white font-medium px-6 py-2 rounded-lg active:scale-90 transition text-sm sm:text-base">
               Mengapa Harus SiEvent?
             </button>
@@ -69,7 +74,7 @@ export default function Hero() {
         {/* Carousel Section */}
         <div className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto relative">
           <Slider {...settings}>
-            {[1, 2, 3].map((_, i) => (
+            {[...Array(5)].map((_, i) => (
               <div key={i} className="relative">
                 <img
                   src="src/assets/samplegambarcaraousel1.jpg" 

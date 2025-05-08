@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import clsx from "clsx";
 import { SignIn, useUser } from "@clerk/clerk-react";
 import { SignOutButton } from "@clerk/clerk-react";
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,6 +19,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between px-6 py-3">
           {/* Logo */}
           <div className="flex items-center space-x-4">
+            <Link to="/">
             <button className="p-0 bg-transparent border-0 cursor-pointer duration-200 active:scale-90">
               <img
                 src="src/assets/NavLogo.png"
@@ -25,17 +27,18 @@ export default function Navbar() {
                 className="h-10 transform transition-transform duration-200 ease-in-out"
               />
             </button>
+            </Link>
           </div>
 
           {/* SearchBar (Desktop Only) */}
-          <div className="hidden md:flex items-center space-x-4 text-gray-400">
+          <div className="hidden lg:flex items-center space-x-4 text-gray-400">
             <div className="w-[400px] lg:w-[450px] xl:w-[500px]">
               <SearchBar />
             </div>
           </div>
 
           {/* Right Buttons (Desktop Only) */}
-          <div className="hidden md:flex items-center space-x-2 relative">
+          <div className="hidden lg:flex items-center space-x-2 relative">
             <button className="bg-[#393E46] hover:bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium duration-200 active:scale-90">
               Jadi SiCreator
             </button>
@@ -65,7 +68,7 @@ export default function Navbar() {
                         setUserMenuOpen(false);
                       }}
                     >
-                      Profile
+                      Dashboard
                     </button>
                     <SignOutButton>
                       <button
@@ -89,7 +92,7 @@ export default function Navbar() {
           </div>
 
           {/* Hamburger (Mobile Only) */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="text-white focus:outline-none transition-transform duration-200 active:scale-90"
@@ -102,7 +105,7 @@ export default function Navbar() {
         {/* Dropdown Mobile Menu */}
         <div
           className={clsx(
-            "md:hidden overflow-hidden transition-all duration-300 ease-in-out bg-[#222831]",
+            "lg:hidden overflow-hidden transition-all duration-300 ease-in-out bg-[#222831]",
             menuOpen ? "max-h-96 opacity-100 py-4 px-6 space-y-4" : "max-h-0 opacity-0 px-6"
           )}
         >
@@ -130,7 +133,7 @@ export default function Navbar() {
                   setMenuOpen(false);
                 }}
               >
-                Profile
+                Dashboard
               </button>
               <SignOutButton>
                 <button

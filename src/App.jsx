@@ -4,6 +4,7 @@ import Navbar from './components/Global/Navbar';
 import Footer from './components/Global/Footer';
 import Home from './pages/Home';
 import Profile from './pages/Customer/Profile';
+import Event from './pages/Event'; 
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/event" element={<Event />} /> 
         </Routes>
       </main>
       <Footer />

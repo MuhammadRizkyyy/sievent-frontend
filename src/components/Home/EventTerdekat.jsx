@@ -12,6 +12,7 @@ const dummyEvents = [
     eventThumbnail: "src/assets/samplegambarcaraousel1.jpg",
     eventDate: "2025-07-12",
     eventType: "offline",
+    eventLocation: "Jakarta",
   },
   {
     _id: "2",
@@ -23,6 +24,7 @@ const dummyEvents = [
     eventThumbnail: "src/assets/samplegambarcaraousel1.jpg",
     eventDate: "2025-08-01",
     eventType: "online",
+    eventLocation: "Zoom Meeting",
   },
   {
     _id: "3a",
@@ -34,6 +36,7 @@ const dummyEvents = [
     eventThumbnail: "src/assets/samplegambarcaraousel1.jpg",
     eventDate: "2025-06-20",
     eventType: "offline",
+    eventLocation: "Yogyakarta",
   },
   {
     _id: "3b",
@@ -45,6 +48,7 @@ const dummyEvents = [
     eventThumbnail: "src/assets/samplegambarcaraousel1.jpg",
     eventDate: "2025-06-20",
     eventType: "offline",
+    eventLocation: "Jakarta",
   },
   {
     _id: "3c",
@@ -56,6 +60,7 @@ const dummyEvents = [
     eventThumbnail: "src/assets/samplegambarcaraousel1.jpg",
     eventDate: "2025-06-20",
     eventType: "offline",
+    eventLocation: "Medan",
   },
 ];
 

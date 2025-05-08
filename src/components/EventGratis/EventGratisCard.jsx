@@ -1,4 +1,5 @@
 import React from "react";
+import { FaCalendarAlt, FaMapMarkerAlt, FaGlobe } from "react-icons/fa";
 
 const EventGratisCard = ({ event }) => {
   const ratings = event.eventRatings || [];
@@ -31,9 +32,24 @@ const EventGratisCard = ({ event }) => {
           <p className="text-gray-500">({ratings.length})</p>
         </div>
 
-        <div className="text-xs text-gray-600 leading-snug">
-          <p><strong>Tanggal:</strong> {event.eventDate || "TBA"}</p>
-          <p><strong>Tipe:</strong> {event.eventType === "online" ? "Online" : "Offline"}</p>
+        <div className="text-xs text-gray-600 leading-snug space-y-1">
+          <p className="flex items-center">
+            <FaCalendarAlt className="mr-2 text-blue-500" />
+            {event.eventDate || "TBA"}
+          </p>
+          <p className="flex items-center">
+            {event.eventType === "online" ? (
+              <>
+                <FaGlobe className="mr-2 text-green-600" />
+                Online
+              </>
+            ) : (
+              <>
+                <FaMapMarkerAlt className="mr-2 text-red-500" />
+                Offline
+              </>
+            )}
+          </p>
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 
 const EventTerdekatCard = ({ event }) => {
   const ratings = event.eventRatings || [];
@@ -8,18 +9,18 @@ const EventTerdekatCard = ({ event }) => {
   const stars = Math.floor(averageRating);
 
   return (
-    <div className="border border-gray-400 pb-6 overflow-hidden rounded-lg transition duration-300 active:scale-90 hover:shadow-lg hover:bg-gray-200 bg-white">
+    <div className="border border-gray-300 pb-6 overflow-hidden rounded-lg transition duration-300 active:scale-95 hover:shadow-lg hover:bg-gray-100 bg-white">
       <img
         className="w-full h-40 object-cover"
         src={event.eventThumbnail}
         alt="Event Thumbnail"
       />
 
-      <div className="p-3 text-left">
-        <h3 className="text-base font-semibold">{event.EventTitle}</h3>
-        <p className="text-gray-500 text-sm">{event.SiCreator?.name || "Unknown"}</p>
+      <div className="p-4 text-left">
+        <h3 className="text-base font-semibold mb-1">{event.EventTitle}</h3>
+        <p className="text-gray-500 text-sm mb-2">{event.SiCreator?.name || "Unknown"}</p>
 
-        <div className="flex items-center space-x-2 mt-1 mb-2">
+        <div className="flex items-center space-x-2 mb-2">
           <p>{averageRating}</p>
           <div className="flex">
             {[...Array(5)].map((_, i) => (
@@ -31,9 +32,14 @@ const EventTerdekatCard = ({ event }) => {
           <p className="text-gray-500">({ratings.length})</p>
         </div>
 
-        <div className="text-sm text-gray-600 mb-2">
-          <p>
-            <strong>Tanggal:</strong> {event.eventDate || "TBA"}
+        <div className="text-sm text-gray-600 space-y-1 mb-2">
+          <p className="flex items-center">
+            <FaCalendarAlt className="mr-2 text-blue-500" />
+            {event.eventDate || "TBA"}
+          </p>
+          <p className="flex items-center">
+            <FaMapMarkerAlt className="mr-2 text-red-500" />
+            {event.eventLocation || "Lokasi tidak tersedia"}
           </p>
           <p>
             <strong>Tipe:</strong> {event.eventType === "online" ? "Online" : "Offline"}
