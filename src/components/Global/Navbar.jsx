@@ -22,7 +22,7 @@ export default function Navbar() {
             <Link to="/">
             <button className="p-0 bg-transparent border-0 cursor-pointer duration-200 active:scale-90">
               <img
-                src="src/assets/NavLogo.png"
+                src="/images/NavLogo.png"
                 alt="Eventbrite Logo"
                 className="h-10 transform transition-transform duration-200 ease-in-out"
               />

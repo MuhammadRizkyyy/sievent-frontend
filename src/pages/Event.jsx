@@ -9,14 +9,14 @@ const events = [
     date: "16 May 2025",
     location: "Batu",
     price: "Rp.175.000",
-    image: "src/assets/samplegambarcaraousel1.jpg",
+    image: "/images/samplegambarcaraousel1.jpg",
   },
   {
     title: "Deliwafa Fest Vol.5 | Ramadhan",
     date: "27 Mar 2025",
     location: "Surabaya",
     price: "Rp.125.000",
-    image: "src/assets/samplegambarcaraousel1.jpg",
+    image: "/images/samplegambarcaraousel1.jpg",
   },
   // Tambah event lainnya...
 ];

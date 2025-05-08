@@ -77,7 +77,7 @@ export default function Hero() {
             {[...Array(5)].map((_, i) => (
               <div key={i} className="relative">
                 <img
-                  src="src/assets/samplegambarcaraousel1.jpg" 
+                  src="/images/samplegambarcaraousel1.jpg"
                   alt={`Slide ${i + 1}`}
                   className="w-full h-auto rounded-xl shadow"
                 />
