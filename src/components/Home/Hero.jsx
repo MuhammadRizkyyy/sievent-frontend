@@ -37,7 +37,7 @@ export default function Hero() {
     slidesToScroll: 1,
     arrows: true, 
     autoplay: true, 
-    autoplaySpeed: 1000,
+    autoplaySpeed: 3000,
     prevArrow: <SamplePrevArrow />,
     nextArrow: <SampleNextArrow />,
     appendDots: dots => (
