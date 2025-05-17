@@ -1,54 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import EventGratisCard from '../EventGratis/EventGratisCard';
-
-const dummyFreeEvents = [
-  {
-    _id: "free-1",
-    EventTitle: "Seminar Karir Digital",
-    SiCreator: { name: "Komunitas Startup Indonesia" },
-    eventRatings: [5, 4, 5, 4],
-    eventThumbnail: "/images/samplegambarcaraousel1.jpg",
-    eventDate: "2025-06-10",
-    eventType: "online",
-  },
-  {
-    _id: "free-2",
-    EventTitle: "Pelatihan Desain Gratis",
-    SiCreator: { name: "Creative School" },
-    eventRatings: [4, 4, 4, 5],
-    eventThumbnail: "/images/samplegambarcaraousel1.jpg",
-    eventDate: "2025-07-05",
-    eventType: "offline",
-  },
-  {
-    _id: "free-3",
-    EventTitle: "Webinar Mental Health",
-    SiCreator: { name: "Health Community" },
-    eventRatings: [5, 5, 5],
-    eventThumbnail: "/images/samplegambarcaraousel1.jpg",
-    eventDate: "2025-08-01",
-    eventType: "online",
-  },
-  {
-    _id: "free-4",
-    EventTitle: "Workshop Coding Dasar",
-    SiCreator: { name: "Tech Academy" },
-    eventRatings: [3, 4, 3],
-    eventThumbnail: "/images/samplegambarcaraousel1.jpg",
-    eventDate: "2025-09-12",
-    eventType: "offline",
-  },
-];
+import { AppContent } from '../../context/AppContext';
+import axios from 'axios';
 
 const EventGratis = () => {
+  const { backendUrl } = useContext(AppContent);
+  const [freeEvents, setFreeEvents] = useState([]);
+
+  useEffect(() => {
+    const fetchFreeEvents = async () => {
+      try {
+        const res = await axios.get(`${backendUrl}/api/event/showevents`);
+        if (res.data.success) {
+          const allEvents = res.data.events;
+          const onlyFree = allEvents.filter((event) => event.price === 0);
+          setFreeEvents(onlyFree);
+        } else {
+          setFreeEvents([]);
+        }
+      } catch (err) {
+        console.error("Gagal fetch event gratis:", err.message);
+        setFreeEvents([]);
+      }
+    };
+
+    fetchFreeEvents();
+  }, [backendUrl]);
+
   return (
     <div className="max-w-[100%] sm:max-w-6xl mx-auto py-10 px-4 sm:px-6 lg:px-8 bg-blue-100 shadow-lg rounded-2xl mt-10">
       <h2 className="text-2xl font-bold text-center mb-8 text-gray-800">Event Gratis</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-        {dummyFreeEvents.map((event) => (
-          <EventGratisCard key={event._id} event={event} />
-        ))}
+        {freeEvents.length > 0 ? (
+          freeEvents.map((event) => (
+            <EventGratisCard key={event._id} event={event} />
+          ))
+        ) : (
+          <p className="text-center col-span-full text-gray-600">Tidak ada event gratis yang tersedia saat ini.</p>
+        )}
       </div>
 
       <div className="flex justify-center mt-8">
