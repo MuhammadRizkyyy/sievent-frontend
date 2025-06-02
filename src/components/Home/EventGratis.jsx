@@ -14,7 +14,7 @@ const EventGratis = () => {
         if (res.data.success) {
           const allEvents = res.data.events;
           const onlyFree = allEvents.filter((event) => event.price === 0);
-          setFreeEvents(onlyFree);
+          setFreeEvents(onlyFree.slice(0, 4)); // Batasi hanya 5 event
         } else {
           setFreeEvents([]);
         }

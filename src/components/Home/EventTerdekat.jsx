@@ -28,7 +28,7 @@ const EventTerdekat = () => {
             (a, b) => new Date(a.date) - new Date(b.date)
           );
 
-          setUpcomingEvents(sorted);
+          setUpcomingEvents(sorted.slice(0, 5));
         } else {
           setUpcomingEvents([]);
         }

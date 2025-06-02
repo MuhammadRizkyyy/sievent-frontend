@@ -8,6 +8,28 @@ const EventTerdekatCard = ({ event }) => {
     : "0.0";
   const stars = Math.floor(averageRating);
 
+  // --- NEW: Determine the price display based on tickets ---
+  let priceDisplay = "Gratis"; // Default to Free
+  let isFreeEvent = true;
+  let minPrice = Infinity;
+
+  if (event.tickets && event.tickets.length > 0) {
+    // Check if any ticket is paid
+    const paidTickets = event.tickets.filter(ticket => !ticket.isFree && ticket.price > 0);
+
+    if (paidTickets.length > 0) {
+      isFreeEvent = false;
+      // Find the minimum price among paid tickets
+      minPrice = Math.min(...paidTickets.map(ticket => ticket.price));
+      priceDisplay = `Mulai dari Rp ${minPrice.toLocaleString("id-ID")}`;
+    } else {
+      // All tickets are free
+      priceDisplay = "Gratis";
+      isFreeEvent = true;
+    }
+  }
+  // --- END NEW ---
+
   return (
     <div className="border border-gray-300 pb-6 overflow-hidden rounded-lg transition duration-300 active:scale-95 hover:shadow-lg hover:bg-gray-100 bg-white">
       <img
@@ -52,17 +74,13 @@ const EventTerdekatCard = ({ event }) => {
           </p>
         </div>
 
+        {/* --- Updated Price Display --- */}
         <p className="text-base font-semibold text-gray-800">
-          {event.price === 0 ? (
-            <span className="inline-block bg-green-100 text-green-600 text-sm font-semibold px-2 py-1 rounded">
-              Free
-            </span>
-          ) : (
-            <span className="inline-block bg-blue-100 text-blue-600 text-sm font-semibold px-2 py-1 rounded">
-              Rp {event.price.toLocaleString()}
-            </span>
-          )}
+          <span className={`inline-block text-sm font-semibold px-2 py-1 rounded ${isFreeEvent ? "bg-green-100 text-green-600" : "bg-blue-100 text-blue-600"}`}>
+            {priceDisplay}
+          </span>
         </p>
+        {/* --- End Updated Price Display --- */}
       </div>
     </div>
   );

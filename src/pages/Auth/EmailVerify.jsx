@@ -19,7 +19,8 @@ const EmailVerify = () => {
         await axios.post(`${backendUrl}/api/auth/send-verify-otp`, {}, { withCredentials: true });
         setAlert({ message: "Kode OTP telah dikirim ke email Anda.", type: "success" });
       } catch (err) {
-        setAlert({ message: "Gagal mengirim OTP.", type: "error" });
+        const msg = err.response?.data?.message || "Gagal mengirim OTP.";
+        setAlert({ message: msg, type: "error" });
       } finally {
         setLoading(false);
       }

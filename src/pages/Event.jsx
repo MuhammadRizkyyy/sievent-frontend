@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { AppContent } from "../context/AppContext";
 import { FaMapMarkerAlt, FaCalendarAlt, FaStar } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; // Import Link
 import Select from "react-select";
 
 const lokasiOptionsStatic = [
@@ -150,9 +150,10 @@ const Event = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredEvents.length > 0 ? (
             filteredEvents.map((event) => (
-              <div
+              <Link
+                to={`/event/${event._id}`} // Link to the event detail page using its ID
                 key={event._id}
-                className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 active:scale-95 overflow-hidden"
+                className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 active:scale-95 overflow-hidden block" // Added 'block' for proper Link behavior
               >
                 <img
                   src={event.bannerUrl}
@@ -192,7 +193,7 @@ const Event = () => {
                     {event.price > 0 ? `Rp.${event.price.toLocaleString("id-ID")}` : "Gratis"}
                   </span>
                 </div>
-              </div>
+              </Link>
             ))
           ) : (
             <p className="text-center col-span-full text-gray-500">Tidak ada event yang ditemukan.</p>

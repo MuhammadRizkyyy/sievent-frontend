@@ -10,6 +10,8 @@ import Event from './pages/Event';
 import Login from './pages/Auth/Login';
 import EmailVerify from './pages/Auth/EmailVerify';
 import ResetPassword from './pages/Auth/ResetPassword';
+import SiCreatorDashboard from './pages/SiCreator/SiCreatorDashboard';
+import EventDetails from './pages/Customer/Eventdetails';
 
 const App = () => {
   const location = useLocation();
@@ -45,6 +47,8 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/verify-email" element={<EmailVerify />} />
           <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/sicreator/dashboard" element={<SiCreatorDashboard />} />
+           <Route path="/event/:id" element={<EventDetails />} />
         </Routes>
       </main>
       {!hideLayout && <Footer />}
